@@ -1,4 +1,5 @@
-from .models import RequestLog
+from django.http import HttpResponseForbidden
+from .models import RequestLog,BlockedIP
 from django.utils.timezone import now
 
 class IPLoggingMiddleware:
@@ -8,6 +9,9 @@ class IPLoggingMiddleware:
     def __call__(self,request):
         # Get the client IP
         ip_address = request.META.get('REMOTE_ADDR')
+
+        if BlockedIP.objects.filter(ip_address=ip_address).exists():
+            return HttpResponseForbidden("Access denied: your IP has been blocked.")
 
         # Log details
         RequestLog.objects.create(
