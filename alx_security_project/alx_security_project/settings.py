@@ -126,3 +126,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Rate limit settings (optional defaults)
 RATELIMIT_VIEW = 'ratelimit.views.ratelimited' #built-in default handler
 RATELIMIT_USE_CACHE = 'default' #use your default cache backend(for counting)
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BEAT_SCHEDULE = {}
