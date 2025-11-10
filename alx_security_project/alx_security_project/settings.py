@@ -122,3 +122,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Rate limit settings (optional defaults)
+RATELIMIT_VIEW = 'ratelimit.views.ratelimited' #built-in default handler
+RATELIMIT_USE_CACHE = 'default' #use your default cache backend(for counting)
